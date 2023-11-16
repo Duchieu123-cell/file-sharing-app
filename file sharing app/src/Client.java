@@ -92,11 +92,11 @@ public class Client implements Runnable {
                         InetAddress targetAddr = (InetAddress) is.readObject();
 
                         Socket peerClient = new Socket(targetAddr, portNum);
-                        System.out.println("Hello : " + peerClient.getLocalPort());
+ 
                         ObjectInputStream peerIs = new ObjectInputStream(peerClient.getInputStream());
                         ObjectOutputStream peerOs = new ObjectOutputStream(peerClient.getOutputStream());
                         
-                        System.out.println("you are here");
+
                         peerOs.writeObject(filename);
                         peerOs.flush();
 
@@ -154,10 +154,9 @@ public class Client implements Runnable {
         }
         public void run() {
             try {
-                System.out.println("i am here");
                 is = new ObjectInputStream(peerServer.getInputStream());
                 os = new ObjectOutputStream(peerServer.getOutputStream());
-                System.out.println("you are here");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
